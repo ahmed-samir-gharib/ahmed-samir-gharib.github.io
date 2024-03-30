@@ -1,141 +1,196 @@
-<!DOCTYPE html>
-<html lang="en">
+
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Noob</title>
+<title>
+    Felices Pascuas
+</title>
+<style>
 
-    <style>
-        body {
-            background-image: linear-gradient(to right top, #225475, #5ea5e7, #71a7ce, #c3d1e7, #d5e4f3);
-            height: 100%;
-            margin: 0;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }
+@import url(https://fonts.googleapis.com/css?family=Indie+Flower);
 
-        .card {
-            position: relative;
-            width: 300px;
-            height: 425px;
-            border: 10px solid #225475;
-            margin: 60px auto 0 auto;
-            box-shadow: inset 10px 0px 15px 0px rgba(0, 0, 0, 0.1);
-            background-image: linear-gradient(to bottom, rgba(255, 255, 255), rgba(255, 255, 255, 0.5)), url("Cndle.png");
+@import url(https://fonts.googleapis.com/css?family=Ribeye);
 
-            background-position: center;
-            /* Center the image */
-            background-repeat: no-repeat;
-            /* Do not repeat the image */
-            background-size: cover;
-            background-color: #e6f0e6;
-        }
+body {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+  background-color: #00bbf9;
+}
 
-        .card .text-container {
-            width: 80%;
-            height: 80%;
-            margin: auto;
-        }
+h1 {
+ font-family: "Ribeye";
+ -webkit-text-stroke: 0.1px #00FFFF;
+ background-color: #00FFFF;
+opacity: 0.8;
+background-position:  4px 0, 4px 0, 0 0, 0 0;
+background-size: 8px 8px;
+background-repeat: repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.prag{
 
-        .strikethrough {
-            text-decoration: line-through;
-        }
+    font :bolder;
+    font-size: 1.25em;
+padding: 5%;}
+.eggs{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-        .card .text-container #head {
-            font-family: 'Nobile', sans-serif;
-            font-size: 1.5em;
-            margin: 60px auto 60px auto;
-        }
+.head {
+  height: 150px;
+  width: 150px;
+  background-color: white;
+  border-radius: 50%;
+  position: relative;
+  left: 20%;
+}
 
-        .card p {
-            font-size: 1.1em;
-            line-height: 1.4;
-            font-family: 'Nobile';
-            color: #331717;
-            font-style: italic;
-            text-align: center;
-            margin: 30px auto 0px auto;
-        }
+.eye1,
+.eye2,
+.nose {
+  height: 10px;
+  width: 10px;
+  background-color: black;
+  border-radius: 50%;
+  position: relative;
+}
 
-        .card .front {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            margin: -10px 0px 0px -10px;
-            border: 10px solid #225475;
-            backface-visibility: hidden;
-            background-color: #225475;
-            /* background-image: url($cover-image);
-	 */
-            background-size: contain;
-            transform-style: preserve-3d;
-            transform-origin: 0% 50%;
-            transform: perspective(800px) rotateY(0deg);
-            transition: all 0.8s ease-in-out;
-        }
+.eye1 {
+  top: 50px;
+  left: 30px;
+}
 
-        .card:hover .front {
-            transform: perspective(800px) rotateY(-170deg);
-            background-color: #41718d;
-        }
+.eye2 {
+  left: 70px;
+}
 
-        .card:hover .back {
-            transform: perspective(800px) rotateY(-170deg);
-            box-shadow: 7px 0px 5px 0px rgba(0, 0, 0, 0.3), inset 2px 0px 15px 0px rgba(0, 0, 0, 0.1);
-            background-color: #d2dcd2;
-        }
+.nose {
+  left: 65px;
+  top: 67px;
+  border-radius: 50% 50% 50% 50% / 24% 25% 75% 76%;
+  width: 12px;
+  background-color: #ff0054;
+}
 
-        .card .back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border: 10px solid #225475;
-            margin: -10px 0px 0px -10px;
-            backface-visibility: visible;
-            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, .5));
-            transform-style: preserve-3d;
-            transform-origin: 0% 50%;
-            transform: perspective(800px) rotateY(0deg);
-            transition: all 0.8s ease-in-out;
-            background-color: #e6f0e6;
-            box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.1);
-        }
+p {
+  position: relative;
+  left: 17px;
+  top: 40px;
+  color:white;
+  font-weight: bolder    ;
+}
 
-        .imgset {
-            position: relative;
-            z-index: 1;
-            margin-bottom: -215px;
-        }
+span {
+    display:inline-block;
+    transform:scale(4,1);
+}
 
-        .imgset img {
-            box-shadow: 0px 6px 11px 7px rgba(0, 0, 0, 0.22);
-            border-radius: 5px;
-        }
-    </style>
+
+.ear1,
+.ear2 {
+  height: 100px;
+  width: 40px;
+  border-radius: 50%;
+  background:radial-gradient(ellipse farthest-side at 50% 50%, #fae1dd 45%, white 47%);
+  position: relative;
+  z-index: -1;
+}
+
+.ear1 {
+  bottom: 140px;
+  left: 1px;
+  transform: rotate(-10deg);
+  animation: move1 1s infinite alternate;
+}
+
+.ear2 {
+  left: 100px;
+  top: 15px;
+  transform: rotate(30deg);
+  animation: move2 1s infinite alternate;
+}
+
+.body {
+  height: 200px;
+  width: 150px;
+  background-color: white;
+  border-radius: 30%;
+  z-index: -1;
+  position: relative;
+  bottom: 70px;
+}
+
+.egg1,
+.egg2{
+  width: 150px;
+  height: 200px;
+  border-radius: 50%;
+  position: relative;
+}
+
+.egg1 {
+background-color: #fee440;
+background-image:  linear-gradient(135deg, #00FFFF 25%, transparent 25%), linear-gradient(225deg, #00FFFF 25%, transparent 25%), linear-gradient(45deg, #00FFFF 25%, transparent 25%), linear-gradient(315deg, #00FFFF 25%, #fee440 25%);
+background-position:  31px 0, 31px 0, 0 0, 0 0;
+background-size: 62px 62px;
+background-repeat: repeat;
+  transform: rotate(-10deg);
+  left: 10px;
+}
+
+.egg2 {
+background-color: #9b5de5;
+background-image: radial-gradient(#f15bb5 10px, #9b5de5 2px);
+background-size: 40px 40px;
+transform: rotate(20deg);
+ right: 10px;
+}
+
+@keyframes move1 {
+  from {left: 15px;}
+  to {right: 30px;}
+}
+
+@keyframes move2 {
+  from {left: 70px; top: 15px;}
+  to {right: 80px;}
+}
+
+</style>
 </head>
-
 <body>
-    <div class="card">
-        <div class="back">
-            <img width="100%" src="in.png">
+<h1>Felices Pascuas </h1>
+<h1>Elizabeth</h1>
+<div class="conteiner">
+ <div class="head">
+   
+   <div class="eye1">
+     <div class="eye2"></div>
+     </div>
+   
+   <div class="nose"></div>
+   
+      <span><p>W</p></span>       
+   
+     <div class="ear1">  
+       <div class="ear2"></div>
+   </div>
+   <div class="body"></div>
+ </div>
+ <div class="eggs">
+    <div class="egg1"></div>
+   <div class="egg2"></div>
+ </div>
 
-        </div>
-        <div class="front">
-            <div class="imgset">
-                <img width="100%" src="BD.png">
-            </div>
-        </div>
-        <div class="text-container">
-            <p id="head">Happy Birthday wszystkiego najlepszego z okazji urodzin!</p>
-            <p>May all Your next days hold happiness and joy kitty ,
-                do't forget to smile , move forwared and never ever give up .
+</div>
+<div>
+   <p class="prag">Deseo que tengas los días más brillantes y llenos de felicidad y alegría, mi encantadora súcubo.</p>
+</div>
 
-            </p>
-            <p>Hope your day goes great!</p>
-        </div>
-    </div>
 
 </body>
-
-</html>
