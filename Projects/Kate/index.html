@@ -1,196 +1,127 @@
-
-
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+    version="XHTML+RDFa 1.0"
+    xmlns:og="http://ogp.me/ns#"
+    xml:lang="en">
+<!-- 
+    Smart developers always View Source. 
+    
+    This application was built using Adobe Flex, an open source framework
+    for building rich Internet applications that get delivered via the
+    Flash Player or to desktops via Adobe AIR. 
+    
+    Learn more about Flex at http://flex.org 
+    // -->
 <head>
-<title>
-    Felices Pascuas
-</title>
-<style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>HappyBirthday  Kate</title>
+<meta name="Keywords" content="" />
+<meta name="Description" content="HappyBirthday  Elizabeth" />
+<meta name="Generator" content="Flip PDF Professional 2.4.9.32 at http://www.flipbuilder.com" />
+<meta name="medium" content="video"/> 
 
-@import url(https://fonts.googleapis.com/css?family=Indie+Flower);
+<meta property="og:image" content="files/shot.png"/>
+<meta property="og:title" content="HappyBirthday  Kate"/> 
+<meta property="og:description" content="HappyBirthday  Elizabeth" />
+<meta property="og:video" content="book.swf"/> 
+<meta property="og:video:height" content="300"/> 
+<meta property="og:video:width" content="420"/> 
+<meta property="og:video:type" content="application/x-shockwave-flash"/> 
 
-@import url(https://fonts.googleapis.com/css?family=Ribeye);
+<meta name="video_height" content="300"/> 
+<meta name="video_width" content="420"/> 
+<meta name="video_type" content="application/x-shockwave-flash"/> 
+<meta name="og:image" content="files/shot.png"/>
 
-body {
-  display: grid;
-  place-items: center;
-  min-height: 100vh;
-  padding: 0;
-  margin: 0;
-  background-color: #00bbf9;
+<link rel="image_src" href="files/shot.png"/>
+ <link rel="apple-touch-icon" href="files/thumb/1.jpg" />
+<!-- Include CSS to eliminate any default margins/padding and set the height of the html element and 
+       the body element to 100%, because Firefox, or any Gecko based browser, interprets percentage as 
+    the percentage of the height of its parent container, which has to be set explicitly.  Initially, 
+    don't display flashContent div so it won't show if JavaScript disabled.
+  -->
+
+<style type="text/css" media="screen">
+/*<![CDATA[*/
+html,
+body
+{
+ height:100%;
+ margin: 0px;
+ overflow:hidden;
 }
 
-h1 {
- font-family: "Ribeye";
- -webkit-text-stroke: 0.1px #00FFFF;
- background-color: #00FFFF;
-opacity: 0.8;
-background-position:  4px 0, 4px 0, 0 0, 0 0;
-background-size: 8px 8px;
-background-repeat: repeat;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.prag{
-
-    font :bolder;
-    font-size: 1.25em;
-padding: 5%;}
-.eggs{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+body
+{
+ margin:0;
+ padding:0;
+ overflow:auto;
+ text-align:center;
+ background-color: #ffffff;
 }
 
-.head {
-  height: 150px;
-  width: 150px;
-  background-color: white;
-  border-radius: 50%;
-  position: relative;
-  left: 20%;
+#flashContent
+{
+ display:none;
 }
-
-.eye1,
-.eye2,
-.nose {
-  height: 10px;
-  width: 10px;
-  background-color: black;
-  border-radius: 50%;
-  position: relative;
-}
-
-.eye1 {
-  top: 50px;
-  left: 30px;
-}
-
-.eye2 {
-  left: 70px;
-}
-
-.nose {
-  left: 65px;
-  top: 67px;
-  border-radius: 50% 50% 50% 50% / 24% 25% 75% 76%;
-  width: 12px;
-  background-color: #ff0054;
-}
-
-p {
-  position: relative;
-  left: 17px;
-  top: 40px;
-  color:white;
-  font-weight: bolder    ;
-}
-
-span {
-    display:inline-block;
-    transform:scale(4,1);
-}
-
-
-.ear1,
-.ear2 {
-  height: 100px;
-  width: 40px;
-  border-radius: 50%;
-  background:radial-gradient(ellipse farthest-side at 50% 50%, #fae1dd 45%, white 47%);
-  position: relative;
-  z-index: -1;
-}
-
-.ear1 {
-  bottom: 140px;
-  left: 1px;
-  transform: rotate(-10deg);
-  animation: move1 1s infinite alternate;
-}
-
-.ear2 {
-  left: 100px;
-  top: 15px;
-  transform: rotate(30deg);
-  animation: move2 1s infinite alternate;
-}
-
-.body {
-  height: 200px;
-  width: 150px;
-  background-color: white;
-  border-radius: 30%;
-  z-index: -1;
-  position: relative;
-  bottom: 70px;
-}
-
-.egg1,
-.egg2{
-  width: 150px;
-  height: 200px;
-  border-radius: 50%;
-  position: relative;
-}
-
-.egg1 {
-background-color: #fee440;
-background-image:  linear-gradient(135deg, #00FFFF 25%, transparent 25%), linear-gradient(225deg, #00FFFF 25%, transparent 25%), linear-gradient(45deg, #00FFFF 25%, transparent 25%), linear-gradient(315deg, #00FFFF 25%, #fee440 25%);
-background-position:  31px 0, 31px 0, 0 0, 0 0;
-background-size: 62px 62px;
-background-repeat: repeat;
-  transform: rotate(-10deg);
-  left: 10px;
-}
-
-.egg2 {
-background-color: #9b5de5;
-background-image: radial-gradient(#f15bb5 10px, #9b5de5 2px);
-background-size: 40px 40px;
-transform: rotate(20deg);
- right: 10px;
-}
-
-@keyframes move1 {
-  from {left: 15px;}
-  to {right: 30px;}
-}
-
-@keyframes move2 {
-  from {left: 70px; top: 15px;}
-  to {right: 80px;}
-}
-
+/*]]>*/
 </style>
+<script type="text/javascript" src="js/swfobject.js"></script>
+<script type="text/javascript" src="js/fbscript.js"></script>
+
 </head>
 <body>
-<h1>Happy Easter </h1>
-<h1>Kate </h1>
-<div class="conteiner">
- <div class="head">
-   
-   <div class="eye1">
-     <div class="eye2"></div>
-     </div>
-   
-   <div class="nose"></div>
-   
-      <span><p>W</p></span>       
-   
-     <div class="ear1">  
-       <div class="ear2"></div>
-   </div>
-   <div class="body"></div>
- </div>
- <div class="eggs">
-    <div class="egg1"></div>
-   <div class="egg2"></div>
- </div>
-
-</div>
-<div>
-   <p class="prag">Wish you the most  britght days ahead of you  full of joy and happniess </p>
+<!-- SWFObject's dynamic embed method replaces this alternative HTML content with Flash content when enough 
+    JavaScript and Flash plug-in support is available. The div is initially hidden so that it doesn't show
+    when JavaScript is disabled.
+  -->
+  
+<div id="flashContent">
+<p>To view this page ensure that Adobe Flash Player version 10.0.0
+or greater is installed.</p>
+ Besides, it's possible to <a href='./files/basic-html/index.html'>view a simplified version of the flippdf book on any device </a>,
+or you can view flippdf <a href='mobile/index.html'>mobile version </a>
 </div>
 
+ <script>
+ 	function showUserAgent(){
+		var str = navigator.userAgent;
+		var p = document.createElement("p");
+		p.innerHTML = str;
+		p.className = "gray";
+		document.getElementById("flashContent").appendChild(p);
+	}
+	
+	showUserAgent();
+</script>
 
+<noscript><div><object classid=
+"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="100%" height=
+"100%" id="FlipBookBuilder"><param name="movie" value="book.swf" />
+<param name="quality" value="high" />
+<param name="bgcolor" value="#ffffff" />
+<param name="allowScriptAccess" value="always" />
+<param name="allowFullScreen" value="true" />
+<param name="allowFullScreenInteractive" value="true" />
+<!--[if !IE]>-->
+<object type="application/x-shockwave-flash" data="book.swf" width=
+"100%" height="100%"><param name="quality" value="high" />
+<param name="bgcolor" value="#ffffff" />
+<param name="allowScriptAccess" value="always" />
+<param name="allowFullScreen" value="true" />
+<param name="allowFullScreenInteractive" value="true" />
+<param name="wmode" value="transparent" />
+<!--<![endif]--><!--[if gte IE 6]>-->
+<p>Either scripts and active content are not permitted to run or
+Adobe Flash Player version 10.0.0 or greater is not installed.</p>
+<!--<![endif]--> 
+<a href="http://www.adobe.com/go/getflashplayer">Get Adobe Flash Player</a> <br/> <br/>
+Besides, it's possible to <a href='./files/basic-html/index.html'>view a simplified version of the flippdf book on any device </a>,
+or you can view flippdf <a href='mobile/index.html'>mobile version </a>
+<!--[if !IE]>--> <!--<![endif]--> </div></noscript>
+<script type="text/javascript" src="js/ActionHtmlWindow.js"></script>
+<script type="text/javascript" src="js/fbendscript.js"></script>
+
+<noscript><div><hr/><ul><li><a href="files/basic-html/index.html">Pages</a></li></ul><hr style="width:80%"/></div></noscript>
 </body>
+</html>
