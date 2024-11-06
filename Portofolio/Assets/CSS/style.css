@@ -436,6 +436,19 @@ var {
   font-family: "Poppins", sans-serif;
 }
 
+
+
+/* Icône burger */
+.burger-icon span {
+  display: block;
+  width: 35px;
+  height: 5px;
+  background-color: #7289da;
+  margin: 6px 0;
+}
+
+
+
 /*---------------------------
 	List Style 
 ---------------------------*/
