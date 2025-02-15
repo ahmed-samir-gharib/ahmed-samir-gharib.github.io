@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+
+	<!-- Linking Google fonts for icons -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0">
+
+
+	<!-- My CSS -->
+	<link rel="stylesheet" href="assets/CSS/Mainstyle.css">
+	<link rel="stylesheet" href="Icostyle.css">
+
+ <title>Al zahra General Hospital || مستشفى الزهراء العام - Al zahra General Hospital || مستشفى الزهراء العام</title>  
+	<style>
+
+	@import url('https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&display=swap');
+
+		*{  font-family: "Overpass", serif;
+
+			  font-optical-sizing: auto;
+
+  font-style: normal;
+
+		}
+        body {
+            background-color: #eee;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 30px auto;
+        }
+
+/* GridView table styling */
+.custom-gridview {
+ width: 100%;
+    border-collapse: separate; /* Use separate borders to allow rounded corners */
+    border-spacing: 0;
+    border: 1px solid #3C91E6;
+    border-radius: 10px; /* Rounded corners for the table */
+    overflow: hidden; /* Ensures rounded corners are visible */
+}
+
+/* Header styling */
+.custom-gridview th {
+    background-color: #3C91E6;
+    color: white;
+    padding: 10px;
+    text-align: left;
+}
+
+/* Row styling */
+.custom-gridview td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Alternate row styling */
+.custom-gridview tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Hover effect */
+.custom-gridview tr:hover {
+    background-color: #e9e9e9;
+}
+
+/* Delete button styling */
+.custom-delete-button {
+    background-color: white;
+    color: red;
+    border: 1px solid red;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Delete button hover effect */
+.custom-delete-button:hover {
+    background-color: #d32f2f;
+     color: #fff;
+}
+
+        h4 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #3C91E6;
+        }
+        .form-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+.form-group i{
+    font-size:1.7em;
+}
+
+        label {
+            font-weight: bold;
+            color: #3C91E6;
+            margin-right: 10px;
+            width: 30%; /* Adjust width as needed */
+            border: none; /* Remove border */
+        }
+        .form-control- {
+            padding: 5px;
+            width: 70%; /* Adjust width as needed */
+            color:gray;
+            font-weight:bolder;
+        }
+
+        .btn-submit {
+            background-color: #3C91E6;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .btn-submit:hover {
+            background-color: #2B6DAE;
+        }
+        .input-group {
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+        .input-group {
+            flex: 1;
+        }
+        .input-group {
+            margin-left: 10px;
+            padding: 10px;
+            background-color: #3C91E6;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .input-group button:hover {
+            background-color: #2B6DAE;
+        }
+        @media (max-width: 600px) {
+            .form-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            label, .form-control-{
+                width: 100%;
+                margin-right: 0;
+               
+               
+                border-radius:10px;
+            
+            }
+        }
+    </style>
+
+
+</head>
+<body>
+
+
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<span class="brand">
+			<a href="#" style="margin-left:5%; margin-right: 5%; width: 48px; height: 48px;" class="profile">
+				<img src="assets/img/me.png">
+			</a>
+			<Label class="text" >Ahmed Samir<Label>
+		
+		</span>
+	
+	
+		<ul class="side-menu top">
+			<li >
+				<a href="Dash.html">
+					<i class='bx bxs-dashboard' ></i>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
+		</ul>
+
+
+		<ul class="side-menu top">
+			<hr class="hr-text" data-content="IT Requests">
+			
+			<li class="active">
+				<a href="crt.html">
+					<i class='bx bxs-printer' ></i>	
+					<span class="text">Cartridge Requests</span>
+				</a>
+			</li>
+			<li>
+				<a href="ad.html">
+					<i class='bx bxs-door-open'></i>
+					<span class="text">AccessDoor Requests</span>
+				</a>
+			</li>
+			<li>
+				<a href="/ENG/IT/Frm_Email.aspx">
+					<i class='bx bxs-envelope' ></i>
+					<span class="text">E-Mails Requests</span>
+				</a>
+			</li>
+			<li>
+				<a href="/ENG/IT/Frm_cam.aspx">
+					<i class='bx bxs-camera-home' ></i>
+					<span class="text">Cams Review</span>
+				</a>
+				<li>
+					<a href="/ENG/IT/Frm_ticket.aspx">
+						<i class="bx"><i class="fas icon-Excuses"></i></i>
+						<span class="text">Make A Ticket</span>
+					</a>
+				</li>
+		</ul>
+
+<ul class="side-menu top">
+	<hr class="hr-text" data-content="HR Requests">
+	<li>
+		<a href="#">
+			<i class="bx"><i class="fas icon-Excuses"></i></i>
+			<span class="text">Excuses Requests</span>
+		</a>
+	</li>
+	<li>
+		<a href="#">
+			<i class='bx'><i class="fas icon-time_back"></i></i>
+			<span class="text">TimeBack</span>
+		</a>
+	</li>
+	<li>
+		<a href="#">
+			<i class='bx' ><i class="fas icon-Days_rplace"></i></i>
+			<span class="text">Days Replacment</span>
+		</a>
+	</li>
+	<li>
+		<a href="#">
+			<i class="bx"><i class="fas icon-hours_replac"></i></i>
+			<span class="text">Hours Replacment</span>
+		</a>
+		<li>
+			<a href="#">
+				<i class="bx"><i class="fas icon-Vacation"></i></i>
+				<span class="text">Vacation</span>
+			</a>
+		</li>
+	</li>
+</ul>
+
+
+		<ul class="side-menu">
+			<li>
+				<a href="#">
+					<i class='bx bxs-cog' ></i>
+					<span class="text">Settings</span>
+				</a>
+			</li>
+			<li>
+				<a href="#" class="logout">
+					<i class='bx bxs-log-out-circle' ></i>
+					<span class="text">Logout</span>
+				</a>
+			</li>
+		</ul>
+	</section>
+	<!-- SIDEBAR -->
+
+
+
+
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu' ></i>
+		
+			<form action="#">
+				<div class="form-input">
+				
+					<button style="visibility: hidden;" class="search-btn"><i class='bx bx-search' ></i></button>
+				</div>
+			</form>
+			<input type="checkbox" id="switch-mode" hidden>
+			<label for="switch-mode" class="switch-mode"></label>
+			<a href="#" class="notification">
+				<i class='bx bxs-bell' ></i>
+				<span class="num">8</span>
+			</a>
+		
+		</nav>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main>
+			<div class="head-title">
+				<div class="left">
+					<h1>Cartridge Requests</h1>
+					<ul class="breadcrumb">
+						<li>
+							<a href="#">Cartridge Requists</a>
+						</li>
+						<li><i class='bx bx-chevron-right' ></i></li>
+						<li>
+							<a class="active" href="#">Home</a>
+						</li>
+					</ul>
+				</div>
+			
+			</div>
+
+			
+
+			<div class="container">
+				<h4>Employee Information</h4>
+				<div class="form-group">
+					<label for="txt_empid"><i class="fas icon-IconempID"></i></label>
+					<labelbel  Class="form-control-" >250013</Label>		  
+				</div>
+				<div class="form-group">
+					<label for="txt_empnme"><i class="fas icon-Iconemp"></i></label>
+					<labelbel  Class="form-control-" >Ahmed Samir</Label>
+				</div>
+				<div class="form-group">
+					<label for="txt_title"><i class="fas icon-IconJob"></i></label>
+					<labelbel  Class="form-control-" >Senior System administrator</Label>
+				</div>
+				<div class="form-group">
+					<label for="txt_dep"><i class="fas icon-IconDep"></i></label>
+		
+					<labelbel  Class="form-control-" >IT Department</Label>	
+				</div>
+			
+			
+					<hr style="margin-top:4%; margin-bottom:2%;"  class="hr-text" data-content="Please fill the field">
+			 
+				<div class="form-group">
+					<label for="currentDate">Date:</label>
+					<Label ID="currentDate" runat="server" CssClass="form-control-"></Label>
+				</div>
+				<div class="form-group">
+					<label for="drp_pnt">Printer:</label>
+					<select style=" border:2px solid rgb(0,118,219); border-radius:5px;" Class="form-control-">
+                        <option>HP LaserJet 1020</option>
+                        <option>Canon Pixma G2010</option>
+                        <option>Brother HL-L2321D</option>
+                    </select>
+			
+				</div>
+				<div class="form-group">
+					<label for="txt_SN">S/N:</label>
+					<Label ID="txt_SN" Class="form-control-" Text="">987654321</Label>
+				</div>
+				<div class="form-group">
+					<label for="txt_Flr">Floor:</label>
+
+					<Label ID="txt_Flr" Class="form-control-" Text="">3rd</Label>
+				</div>
+				<div class="form-group">
+					<label for="txt_Lctin">Location:</label>
+					<asp:Label ID="txt_Lctin" runat="server" CssClass="form-control-" Text=""></asp:Label>
+				</div>
+				  <div class="form-group">
+					<label for="txt_lstrqst">Last Requist:</label>
+					<Label Class="form-control-" Text="">IT Office</Label>
+				</div>
+				<div class="form-group">
+					<label for="Drp_crt">Cartridge:</label>
+					<select style=" border:2px solid rgb(0,118,219); border-radius:5px;" Class="form-control-">
+                        <option>HP 85A</option>
+                        <option>Canon PG-47</option>
+                        <option>Brother TN-2365</option>
+                    </select>
+			
+				</div>
+				<div class="form-group">
+					<label for="quantity">QTY:</label>
+					<div class="input-group">
+			   
+						<input type="number" ID="txt_qty"  min="1" value="1" style=" border:2px solid rgb(0,118,219); border-radius:5px;" class="form-control-" runat="server">
+					
+						
+						<Button Class="input-group" ID="addButton" OnClick="addButton_Click" runat="server" Text="Add">Add</Button>
+					
+					</div>
+				</div>
+				<asp:Button CssClass="input-group" ID="submit" OnClick="submit_Click" runat="server" Text="Submit" />
+			</div>
+			<div class="container">
+			<hr style="margin-top:4%; margin-bottom:2%;"  class="hr-text" data-content="Order Information">
+			<asp:GridView ID="DGW" runat="server" AutoGenerateColumns="False" ShowFooter="True" CssClass="custom-gridview" OnRowDeleting="DGW_RowDeleting">
+				<Columns>
+					<asp:BoundField DataField="RowNumber" HeaderText="No." SortExpression="RowNumber" />
+					<asp:BoundField DataField="crstID" HeaderText="crstID" SortExpression="crstID" />
+					<asp:BoundField DataField="CartridgeName" HeaderText="CartridgeName" SortExpression="CartridgeName" />
+					<asp:BoundField DataField="Quantity" HeaderText="Quantity" SortExpression="Quantity" />
+					<asp:TemplateField>
+						<ItemTemplate>
+							<asp:Button ID="btnDelete" runat="server" Text="Delete" CommandName="Delete" CommandArgument='<%# Eval("RowNumber") %>' OnClientClick="return confirm('Are you sure you want to delete this item?');" CssClass="custom-delete-button" />
+						</ItemTemplate>
+					</asp:TemplateField>
+				</Columns>
+			</asp:GridView>
+		</div>
+		
+		
+		
+				  </div>
+		
+		
+		
+		
+		
+		
+			
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+	<script>
+		document.getElementById('<%= currentDate.ClientID %>').innerText = new Date().toLocaleDateString();
+   </script>
+
+	<script src="assets/JS/script.js"></script>
+</body>
+</html>

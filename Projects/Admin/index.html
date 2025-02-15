@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+   	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Linking Google fonts for icons -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+	<!-- My CSS -->
+	<link rel="stylesheet" href="./assets/CSS/logStyle.Css">
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+	<title>Login Page | @IT</title>
+</head>
+<body>
+	<div class="container">
+
+
+	<div class="screen">
+		<div class="screen__content">
+			<form runat="server"  class="login">
+				<div class="login__field">
+	
+					<i class="login__icon"><span class="material-icons md-48">
+						person
+						</span></i>
+			
+
+						<input type ="text"  runat="server" class="login__input" placeholder="Type your Emp#" >
+					
+
+				</div>
+				<div class="login__field">
+					<i class="login__icon"><span class="material-icons md-48">
+						lock
+						</span></i>
+				<input type="password" ID="TXT_PWD" runat="server"  class="login__input" placeholder="Type your Password" >
+				
+					            <asp:Label ID="MSG" runat="server" Text="Username or password wrong" Visible="False" ForeColor="red"></asp:Label>
+				</div>
+
+				<div  > 
+                    <button type="button" class="button login__submit" onclick="redirectToDashboard()">Log In Now</button>
+			
+					
+				
+</div>
+				
+			</form>
+			<div class="social-login">
+				<h3>Social Media</h3>
+								
+				<div class="social-icons">
+<a href="https://alzahragh.com/" class="social-login__icon fa-solid fa-globe" target="_blank"></a>
+					<a href="https://alzahragh.com/" class="social-login__icon fab fa-instagram" target="_blank"></a>
+					<a href="https://alzahragh.com/" class="social-login__icon fab fa-instagram" target="_blank"></a>
+				</div>
+			</div>
+		</div>
+		<div class="screen__background">
+			<span class="screen__background__shape screen__background__shape4"></span>
+			<span class="screen__background__shape screen__background__shape3"></span>		
+			<span class="screen__background__shape screen__background__shape2"></span>
+			<span class="screen__background__shape screen__background__shape1"></span>
+		</div>		
+
+</div>
+	
+		</div>
+
+		  <footer class="copyright-footer">
+            <p >&copy; 2024 <a style="color :#3b3d9c; text-decoration :none;" href="https://ahmed-samir-gharib.github.io/Portofolio/index.html">AHMED SAMIR.</a> All rights reserved.</p>
+        </footer>	
+  <script src="https://kit.fontawesome.com/a5c221680f.js" crossorigin="anonymous"></script>
+  <script>
+    function redirectToDashboard() {
+        window.location.href = "dash.html";
+    }
+</script>
+
+</body>
+	
+</html>
