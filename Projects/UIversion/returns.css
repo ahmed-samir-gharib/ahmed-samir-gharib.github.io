@@ -1,0 +1,33 @@
+
+/* Returns page-only styles */
+
+#page-returns .panel-title {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 8px; color: #fff;
+}
+
+#page-returns .table td,
+#page-returns .table th { vertical-align: middle; }
+
+#page-returns .form-select,
+#page-returns .form-control {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border);
+}
+
+#page-returns .form-select:focus,
+#page-returns .form-control:focus {
+  box-shadow: 0 0 0 .2rem rgba(14,165,255,.2);
+}
+
+#page-returns .badge-status {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  font-size: 12px;
+}
+#page-returns .badge-assigned { background: rgba(14,165,255,.08); color: #9dd9ff; }
+#page-returns .badge-other    { background: rgba(148,163,184,.12); color: #cbd5e1; }
+
+#page-returns .is-invalid { border-color: #ef4444 !important; }

@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="UTF-8" />
+  <title>CEER · Secure Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="Login.css" />
+</head>
+<body>
+  <!-- Blurred Image Background -->
+  <div class="bg-image" aria-hidden="true"></div>
+
+  <!-- Fog + Energy Overlay -->
+  <div class="bg" aria-hidden="true">
+    <span></span><span></span><span></span><span></span>
+  </div>
+
+  <!-- Login -->
+  <main class="login-wrapper" role="main">
+    <section class="login-glass" aria-label="Login panel">
+      <!-- LEFT VISUAL -->
+      <div class="login-visual" aria-hidden="true">
+        <div class="car-glow"></div>
+        <img src="car.png" alt="" />
+        <div class="fog"></div>
+      </div>
+
+      <!-- RIGHT FORM -->
+      <div class="login-form">
+        <header class="header-row">
+          <div>
+            <h1 class="logo">CEER</h1>
+            <p class="tagline">It's in the game xD</p>
+          </div>
+
+          <!-- Theme Toggle -->
+          <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Toggle theme">
+            <span class="icon sun" aria-hidden="true">☀️</span>
+            <span class="icon moon" aria-hidden="true">🌙</span>
+          </button>
+        </header>
+
+        <form id="loginForm" novalidate autocomplete="on">
+          <div class="field">
+            <input id="email" name="email" type="email" required autocomplete="email" inputmode="email" />
+            <label for="email">Email</label>
+            <p class="field-hint" id="emailHint">Use your company email address.</p>
+          </div>
+
+          <div class="field">
+            <input id="password" name="password" type="password" required autocomplete="current-password" />
+            <label for="password">Password</label>
+          </div>
+<a href="index.html">
+   <button class="btn" id="signInBtn" type="submit" aria-live="polite">
+            <span class="btn__spinner" aria-hidden="true"></span>
+            <span class="btn__label">Sign In</span>
+          </button>
+</a>
+       
+        </form>
+
+
+        <span class="copyright">
+          <p>© 2026 <a class="footer-name" href="https://ahmed-samir-gharib.github.io/MyResume/index.html">AHMED SAMIR</a>. All rights reserved.</p>
+        </span>
+      </div>
+    </section>
+  </main>
+
+  <script src="Login.js"></script>
+</body>
+</html>

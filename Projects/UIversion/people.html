@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IT Inventory | Dashboard</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <!-- App Styles -->
+  <link href="styles.css" rel="stylesheet">
+    <link href="people.css" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<aside class="app-sidebar">
+  <div class="brand">
+    <i class="bi bi-cpu-fill"></i>
+    <span>IT Inventory</span>
+  </div>
+
+   <nav class="nav flex-column">
+
+    <a class="nav-link active" href="index.html">
+      <i class="bi bi-speedometer2"></i>Dashboard</a>
+    <div class="nav-section">Master</div>
+    <a class="nav-link" href="Departments.html"><i class="bi bi-building"></i> Departments</a>
+    <a class="nav-link" href="people.html"><i class="bi bi-people"></i> People</a>
+    <a class="nav-link" href="itemtypes.html"><i class="bi bi-grid-1x2"></i> Item Types</a>
+    <a class="nav-link" href="#"><i class="bi bi-truck"></i> Vendors</a>
+    <a class="nav-link" href="models.html"><i class="bi bi-cpu"></i> Models</a>
+
+    <div class="nav-section">Operations</div>
+    <a class="nav-link" href="receive.html"><i class="bi bi-box-seam"></i> Stock Receive</a>
+    <a class="nav-link" href="assets.html"><i class="bi bi-hdd-network"></i> Assets</a>
+    <a class="nav-link" href="handover.html"><i class="bi bi-arrow-right-circle"></i> New Handover</a>
+    <a class="nav-link" href="returns.html"><i class="bi bi-arrow-90deg-left"></i> Returns</a>
+
+    <div class="nav-section">Insights</div>
+    <a class="nav-link" href="#"><i class="bi bi-graph-up"></i> Reports</a>
+
+    <div class="nav-section">Admin</div>
+    <a class="nav-link" href="#"><i class="bi bi-gear"></i> Settings & Roles</a>
+
+  </nav>
+</aside>
+
+<!-- MAIN -->
+<main class="app-main">
+
+  <!-- TOPBAR -->
+  <header class="app-topbar">
+    <div class="search-box">
+      <i class="bi bi-search"></i>
+      <input type="search" placeholder="Search assets, people, serials…">
+    </div>
+
+    <div class="d-flex align-items-center gap-3">
+      <button id="btnTheme" class="btn btn-sm btn-glass">
+        <i class="bi bi-moon-stars"></i>
+      </button>
+
+      <div class="user-menu">
+        <img class="avatar" src="https://i.pravatar.cc/40" alt="User">
+        <span>IT Staff</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <section class="container-fluid py-4">
+
+<!-- People: Page Wrapper -->
+<div id="page-people" class="page-block">
+
+  <!-- Title / Actions -->
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <div class="d-flex align-items-center gap-2">
+      <i class="bi bi-people fs-5 text-primary"></i>
+      <h4 class="m-0">People</h4>
+      <span class="badge bg-secondary-subtle text-secondary border ms-2" id="peopleCount">0</span>
+    </div>
+
+    <div class="d-flex align-items-center gap-2 flex-wrap">
+      <div class="people-search input-group input-group-sm">
+        <span class="input-group-text bg-transparent border-end-0">
+          <i class="bi bi-search"></i>
+        </span>
+        <input id="txtSearchPeople" type="search" class="form-control border-start-0"
+               placeholder="Search name, employee id, email, phone">
+      </div>
+
+      <select id="ddlPeopleDeptFilter" class="form-select form-select-sm filter-select" style="min-width: 180px">
+        <option value="">All Departments</option>
+      </select>
+
+      <button class="btn btn-primary-neon btn-sm" data-bs-toggle="modal" data-bs-target="#dlgAddPerson">
+        <i class="bi bi-person-plus"></i> Add Person
+      </button>
+    </div>
+  </div>
+
+  <!-- Table Card -->
+  <div class="glass p-3">
+    <div class="table-responsive">
+      <table class="table table-dark table-hover align-middle mb-0" id="tblPeople">
+        <thead>
+          <tr>
+            <th style="width:40px;"></th>
+            <th>Full Name</th>
+            <th>Employee ID</th>
+            <th>Department</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th style="width:120px;" class="text-end">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- rows injected by people.js -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Add Person Modal -->
+  <div class="modal fade" id="dlgAddPerson" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content glass border-0">
+        <div class="modal-header border-0">
+          <h5 class="modal-title"><i class="bi bi-person-plus"></i> Add Person</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body pt-0">
+          <form id="frmAddPerson" class="row g-3">
+            <div class="col-md-7">
+              <label class="form-label">Full Name <span class="text-danger">*</span></label>
+              <input name="FullName" class="form-control" placeholder="e.g., Ahmed Samir" required>
+            </div>
+            <div class="col-md-5">
+              <label class="form-label">Employee ID <span class="text-danger">*</span></label>
+              <input name="EmployeeId" class="form-control" placeholder="e.g., EMP1023" maxlength="20" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Email</label>
+              <input type="email" name="Email" class="form-control" placeholder="name@company.com">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Phone</label>
+              <input name="Phone" class="form-control" placeholder="+966 5X XXX XXXX">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Department <span class="text-danger">*</span></label>
+              <select name="DepartmentId" class="form-select" required></select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Notes</label>
+              <input name="Notes" class="form-control" placeholder="Optional">
+            </div>
+            <div class="col-12">
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="chkActiveAdd" checked>
+                <label class="form-check-label" for="chkActiveAdd">Active</label>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer border-0">
+          <button class="btn btn-glass" data-bs-dismiss="modal">Cancel</button>
+          <button id="btnSaveAddPerson" class="btn btn-primary-neon">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Person Modal -->
+  <div class="modal fade" id="dlgEditPerson" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content glass border-0">
+        <div class="modal-header border-0">
+          <h5 class="modal-title"><i class="bi bi-pencil-square"></i> Edit Person</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body pt-0">
+          <form id="frmEditPerson" class="row g-3">
+            <input type="hidden" name="PersonId">
+            <div class="col-md-7">
+              <label class="form-label">Full Name <span class="text-danger">*</span></label>
+              <input name="FullName" class="form-control" required>
+            </div>
+            <div class="col-md-5">
+              <label class="form-label">Employee ID <span class="text-danger">*</span></label>
+              <input name="EmployeeId" class="form-control" maxlength="20" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Email</label>
+              <input type="email" name="Email" class="form-control">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Phone</label>
+              <input name="Phone" class="form-control">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Department <span class="text-danger">*</span></label>
+              <select name="DepartmentId" class="form-select" required></select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Notes</label>
+              <input name="Notes" class="form-control">
+            </div>
+            <div class="col-12">
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="chkActiveEdit">
+                <label class="form-check-label" for="chkActiveEdit">Active</label>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer border-0">
+          <button class="btn btn-glass" data-bs-dismiss="modal">Close</button>
+          <button id="btnSaveEditPerson" class="btn btn-primary-neon">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete Confirm Modal -->
+  <div class="modal fade" id="dlgDeletePerson" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content glass border-0">
+        <div class="modal-header border-0">
+          <h5 class="modal-title text-danger"><i class="bi bi-trash3"></i> Delete Person</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <p class="mb-0">Delete <strong id="delPersonName">this person</strong>? This cannot be undone.</p>
+        </div>
+        <div class="modal-footer border-0">
+          <button class="btn btn-glass" data-bs-dismiss="modal">Cancel</button>
+          <button id="btnConfirmDeletePerson" class="btn btn-danger">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+  </section>
+</main>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="app.js"></script>
+<script src="people.js"></script>
+</body>
+</html>

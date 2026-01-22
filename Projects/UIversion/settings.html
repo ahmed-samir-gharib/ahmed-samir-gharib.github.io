@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IT Inventory | Dashboard</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <!-- App Styles -->
+  <link href="styles.css" rel="stylesheet">
+   <link href="returns.css" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<aside class="app-sidebar">
+  <div class="brand">
+    <i class="bi bi-cpu-fill"></i>
+    <span>IT Inventory</span>
+  </div>
+
+  <nav class="nav flex-column">
+
+    <a class="nav-link active" href="index.html">
+      <i class="bi bi-speedometer2"></i>Dashboard</a>
+    <div class="nav-section">Master</div>
+    <a class="nav-link" href="Departments.html"><i class="bi bi-building"></i> Departments</a>
+    <a class="nav-link" href="people.html"><i class="bi bi-people"></i> People</a>
+    <a class="nav-link" href="itemtypes.html"><i class="bi bi-grid-1x2"></i> Item Types</a>
+    <a class="nav-link" href="#"><i class="bi bi-truck"></i> Vendors</a>
+    <a class="nav-link" href="models.html"><i class="bi bi-cpu"></i> Models</a>
+
+    <div class="nav-section">Operations</div>
+    <a class="nav-link" href="receive.html"><i class="bi bi-box-seam"></i> Stock Receive</a>
+    <a class="nav-link" href="assets.html"><i class="bi bi-hdd-network"></i> Assets</a>
+    <a class="nav-link" href="handover.html"><i class="bi bi-arrow-right-circle"></i> New Handover</a>
+    <a class="nav-link" href="returns.html"><i class="bi bi-arrow-90deg-left"></i> Returns</a>
+
+    <div class="nav-section">Insights</div>
+    <a class="nav-link" href="#"><i class="bi bi-graph-up"></i> Reports</a>
+
+    <div class="nav-section">Admin</div>
+    <a class="nav-link" href="#"><i class="bi bi-gear"></i> Settings & Roles</a>
+
+  </nav>
+</aside>
+
+<!-- MAIN -->
+<main class="app-main">
+
+  <!-- TOPBAR -->
+  <header class="app-topbar">
+    <div class="search-box">
+      <i class="bi bi-search"></i>
+      <input type="search" placeholder="Search assets, people, serials…">
+    </div>
+
+    <div class="d-flex align-items-center gap-3">
+      <button id="btnTheme" class="btn btn-sm btn-glass">
+        <i class="bi bi-moon-stars"></i>
+      </button>
+
+      <div class="user-menu">
+        <img class="avatar" src="https://i.pravatar.cc/40" alt="User">
+        <span>IT Staff</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <section class="container-fluid py-4">
+         <!-- Settings & Roles -->
+      <div id="page-settings" class="page-block">
+        <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
+          <div class="d-flex align-items-center gap-2">
+            <i class="bi bi-gear fs-5 text-primary"></i>
+            <h4 class="m-0">Settings & Roles</h4>
+          </div>
+          <div class="d-flex align-items-center gap-2">
+            <button id="btnExportUsers" class="btn btn-sm btn-glass"><i class="bi bi-download"></i> Export Users CSV</button>
+          </div>
+        </div>
+
+        <!-- Tabs -->
+        <ul class="nav nav-tabs glass-tabs" id="settingsTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="users-tab" data-bs-toggle="tab" data-bs-target="#tab-users" type="button" role="tab">
+              <i class="bi bi-people"></i> Users
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="roles-tab" data-bs-toggle="tab" data-bs-target="#tab-roles" type="button" role="tab">
+              <i class="bi bi-shield-lock"></i> Roles
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="auth-tab" data-bs-toggle="tab" data-bs-target="#tab-auth" type="button" role="tab">
+              <i class="bi bi-key"></i> Authentication
+            </button>
+          </li>
+        </ul>
+
+        <div class="tab-content mt-3" id="settingsTabsContent">
+
+          <!-- USERS TAB -->
+          <div class="tab-pane fade show active" id="tab-users" role="tabpanel">
+            <div class="glass p-3 mb-3">
+              <div class="d-flex align-items-center gap-2 flex-wrap">
+                <div class="input-group input-group-sm users-search">
+                  <span class="input-group-text bg-transparent border-end-0"><i class="bi bi-search"></i></span>
+                  <input id="txtSearchUsers" type="search" class="form-control border-start-0" placeholder="Search by name, email, employee ID">
+                </div>
+                <select id="ddlRoleFilter" class="form-select form-select-sm filter-select" style="min-width: 180px">
+                  <option value="">All Roles</option>
+                </select>
+                <select id="ddlStatusFilter" class="form-select form-select-sm filter-select" style="min-width: 160px">
+                  <option value="">All Status</option>
+                  <option value="active">Active</option>
+                  <option value="locked">Locked</option>
+                </select>
+                <div class="ms-auto d-flex align-items-center gap-2">
+                  <span class="badge bg-secondary-subtle text-secondary border" id="usersCount">0</span>
+                  <button class="btn btn-primary-neon btn-sm" data-bs-toggle="modal" data-bs-target="#dlgAddUser">
+                    <i class="bi bi-person-plus"></i> Invite / Add User
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="glass p-3">
+              <div class="table-responsive">
+                <table class="table table-dark table-hover align-middle mb-0" id="tblUsers">
+                  <thead>
+                    <tr>
+                      <th style="width:44px;"></th>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Employee ID</th>
+                      <th>Roles</th>
+                      <th>Status</th>
+                      <th style="width:200px;" class="text-end">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody><!-- rows injected --></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- ROLES TAB -->
+          <div class="tab-pane fade" id="tab-roles" role="tabpanel">
+            <div class="glass p-3 mb-3">
+              <div class="d-flex align-items-center gap-2 flex-wrap">
+                <div class="input-group input-group-sm roles-search">
+                  <span class="input-group-text bg-transparent border-end-0"><i class="bi bi-search"></i></span>
+                  <input id="txtSearchRoles" type="search" class="form-control border-start-0" placeholder="Search roles by name or description">
+                </div>
+                <div class="ms-auto d-flex align-items-center gap-2">
+                  <span class="badge bg-secondary-subtle text-secondary border" id="rolesCount">0</span>
+                  <button class="btn btn-primary-neon btn-sm" data-bs-toggle="modal" data-bs-target="#dlgAddRole">
+                    <i class="bi bi-plus-lg"></i> Add Role
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="glass p-3">
+              <div class="table-responsive">
+                <table class="table table-dark table-hover align-middle mb-0" id="tblRoles">
+                  <thead>
+                    <tr>
+                      <th>Role</th>
+                      <th>Description</th>
+                      <th>Users</th>
+                      <th>Permissions</th>
+                      <th style="width:140px;" class="text-end">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody><!-- rows injected --></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- AUTH TAB -->
+          <div class="tab-pane fade" id="tab-auth" role="tabpanel">
+            <div class="row g-3">
+              <div class="col-12 col-xl-6">
+                <div class="glass p-3 h-100">
+                  <h6 class="panel-title"><i class="bi bi-key"></i> Authentication Mode</h6>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="authMode" id="authForms" value="Forms" checked>
+                    <label class="form-check-label" for="authForms">Forms (email / password)</label>
+                  </div>
+                  <div class="form-check mt-1">
+                    <input class="form-check-input" type="radio" name="authMode" id="authWindows" value="Windows" disabled>
+                    <label class="form-check-label" for="authWindows">Windows Authentication (intranet)</label>
+                  </div>
+                  <div class="small text-secondary mt-2">We’ll store hashed passwords and enforce the policy below (UI only for now).</div>
+
+                  <hr class="my-3 border-secondary">
+
+                  <h6 class="panel-title"><i class="bi bi-shield-lock"></i> Password Policy</h6>
+                  <div class="row g-3">
+                    <div class="col-md-4">
+                      <label class="form-label">Min Length</label>
+                      <input id="pwdMinLen" type="number" min="6" step="1" class="form-control" value="10">
+                    </div>
+                    <div class="col-md-8">
+                      <label class="form-label">Complexity</label>
+                      <div class="d-flex flex-wrap gap-3">
+                        <div class="form-check"><input class="form-check-input" type="checkbox" id="pwdUpper" checked><label class="form-check-label" for="pwdUpper">Uppercase</label></div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox" id="pwdLower" checked><label class="form-check-label" for="pwdLower">Lowercase</label></div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox" id="pwdDigit" checked><label class="form-check-label" for="pwdDigit">Digit</label></div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox" id="pwdSymbol"><label class="form-check-label" for="pwdSymbol">Symbol</label></div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <label class="form-label">Lockout Threshold</label>
+                      <input id="pwdLockout" type="number" min="3" step="1" class="form-control" value="5">
+                    </div>
+                    <div class="col-md-8">
+                      <label class="form-label">Default Role for New Users</label>
+                      <select id="ddlDefaultRole" class="form-select"></select>
+                    </div>
+                  </div>
+
+                  <div class="text-end mt-3">
+                    <button id="btnSaveAuth" class="btn btn-primary-neon"><i class="bi bi-check2-circle"></i> Save Auth Settings</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12 col-xl-6">
+                <div class="glass p-3 h-100">
+                  <h6 class="panel-title"><i class="bi bi-envelope-paper"></i> Email Templates (UI)</h6>
+                  <div class="mb-2">
+                    <label class="form-label">Invite Email Subject</label>
+                    <input id="tmplInviteSubj" class="form-control" value="You’re invited to IT Inventory">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Invite Email Body</label>
+                    <textarea id="tmplInviteBody" class="form-control" rows="4">Hello {{FullName}},&#10;You have been invited to IT Inventory. Click the link below to set your password and sign in.&#10;&#10;{{InviteLink}}&#10;&#10;Thanks,&#10;IT Team</textarea>
+                  </div>
+                  <div class="mb-2">
+                    <label class="form-label">Password Reset Subject</label>
+                    <input id="tmplResetSubj" class="form-control" value="Reset your IT Inventory password">
+                  </div>
+                  <div>
+                    <label class="form-label">Password Reset Body</label>
+                    <textarea id="tmplResetBody" class="form-control" rows="4">Hello {{FullName}},&#10;Use the link below to reset your password.&#10;&#10;{{ResetLink}}&#10;&#10;Thanks,&#10;IT Team</textarea>
+                  </div>
+
+                  <div class="text-end mt-3">
+                    <button id="btnSaveTemplates" class="btn btn-primary-neon"><i class="bi bi-save"></i> Save Templates</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /.tab-content -->
+      </div><!-- /#page-settings -->
+
+      <!-- Modals -->
+
+      <!-- Add User -->
+      <div class="modal fade" id="dlgAddUser" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+          <div class="modal-content glass border-0">
+            <div class="modal-header border-0">
+              <h5 class="modal-title"><i class="bi bi-person-plus"></i> Invite / Add User</h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body pt-0">
+              <form id="frmAddUser" class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label">Full Name <span class="text-danger">*</span></label>
+                  <input name="FullName" class="form-control" placeholder="e.g., Ahmed Samir" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Email <span class="text-danger">*</span></label>
+                  <input type="email" name="Email" class="form-control" placeholder="name@company.com" required>
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label">Employee ID</label>
+                  <input name="EmployeeId" class="form-control" placeholder="EMPxxxx">
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label">Status</label>
+                  <select name="Status" class="form-select">
+                    <option value="Active">Active</option>
+                    <option value="Locked">Locked</option>
+                  </select>
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label">Roles</label>
+                  <select name="Roles" class="form-select" multiple size="3" id="rolesMultiAdd"></select>
+                </div>
+                <div class="col-12">
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="chkSendInvite" checked>
+                    <label class="form-check-label" for="chkSendInvite">Send invite email with set‑password link</label>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer border-0">
+              <button class="btn btn-glass" data-bs-dismiss="modal">Cancel</button>
+              <button id="btnSaveAddUser" class="btn btn-primary-neon">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Edit User -->
+      <div class="modal fade" id="dlgEditUser" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+          <div class="modal-content glass border-0">
+            <div class="modal-header border-0">
+              <h5 class="modal-title"><i class="bi bi-pencil-square"></i> Edit User</h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body pt-0">
+              <form id="frmEditUser" class="row g-3">
+                <input type="hidden" name="UserId">
+                <div class="col-md-6">
+                  <label class="form-label">Full Name <span class="text-danger">*</span></label>
+                  <input name="FullName" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Email <span class="text-danger">*</span></label>
+                  <input type="email" name="Email" class="form-control" required>
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label">Employee ID</label>
+                  <input name="EmployeeId" class="form-control">
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label">Status</label>
+                  <select name="Status" class="form-select">
+                    <option value="Active">Active</option>
+                    <option value="Locked">Locked</option>
+                  </select>
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label">Roles</label>
+                  <select name="Roles" class="form-select" multiple size="3" id="rolesMultiEdit"></select>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer border-0">
+              <button class="btn btn-glass" data-bs-dismiss="modal">Close</button>
+              <button id="btnSaveEditUser" class="btn btn-primary-neon">Update</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reset Password -->
+      <div class="modal fade" id="dlgResetPwd" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content glass border-0">
+            <div class="modal-header border-0">
+              <h5 class="modal-title"><i class="bi bi-key"></i> Reset Password</h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              <p class="mb-2">Send a password reset link to <strong id="resetUserEmail">user@company.com</strong>?</p>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="chkForceChange" checked>
+                <label class="form-check-label" for="chkForceChange">Require password change on next sign‑in</label>
+              </div>
+            </div>
+            <div class="modal-footer border-0">
+              <button class="btn btn-glass" data-bs-dismiss="modal">Cancel</button>
+              <button id="btnConfirmResetPwd" class="btn btn-primary-neon">Send Reset</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add Role -->
+      <div class="modal fade" id="dlgAddRole" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+          <div class="modal-content glass border-0">
+            <div class="modal-header border-0">
+              <h5 class="modal-title"><i class="bi bi-shield-lock"></i> Add Role</h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body pt-0">
+              <form id="frmAddRole" class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label">Role Name <span class="text-danger">*</span></label>
+                  <input name="Name" class="form-control" placeholder="e.g., IT Staff" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Description</label>
+                  <input name="Description" class="form-control" placeholder="Optional">
+                </div>
+                <div class="col-12">
+                  <label class="form-label">Permissions</label>
+                  <div id="permAdd" class="perm-grid"><!-- checkboxes injected --></div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer border-0">
+              <button class="btn btn-glass" data-bs-dismiss="modal">Cancel</button>
+              <button id="btnSaveAddRole" class="btn btn-primary-neon">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Edit Role -->
+      <div class="modal fade" id="dlgEditRole" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+          <div class="modal-content glass border-0">
+            <div class="modal-header border-0">
+              <h5 class="modal-title"><i class="bi bi-pencil-square"></i> Edit Role</h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body pt-0">
+              <form id="frmEditRole" class="row g-3">
+                <input type="hidden" name="RoleId">
+                <div class="col-md-6">
+                  <label class="form-label">Role Name <span class="text-danger">*</span></label>
+                  <input name="Name" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Description</label>
+                  <input name="Description" class="form-control">
+                </div>
+                <div class="col-12">
+                  <label class="form-label">Permissions</label>
+                  <div id="permEdit" class="perm-grid"><!-- checkboxes injected --></div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer border-0">
+              <button class="btn btn-glass" data-bs-dismiss="modal">Close</button>
+              <button id="btnSaveEditRole" class="btn btn-primary-neon">Update</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Delete Role -->
+      <div class="modal fade" id="dlgDeleteRole" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content glass border-0">
+            <div class="modal-header border-0">
+              <h5 class="modal-title text-danger"><i class="bi bi-trash3"></i> Delete Role</h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              <p class="mb-0">Delete <strong id="delRoleName">this role</strong>? (Later in backend: prevent delete if users are assigned.)</p>
+            </div>
+            <div class="modal-footer border-0">
+              <button class="btn btn-glass" data-bs-dismiss="modal">Cancel</button>
+              <button id="btnConfirmDeleteRole" class="btn btn-danger">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+  </section>
+</main>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="app.js"></script>
+<script src="returns.js"></script>
+</body>
+</html>

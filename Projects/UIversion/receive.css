@@ -1,0 +1,19 @@
+
+/* Stock Receive page-only styles */
+
+#page-receive .panel-title {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 8px; color: #fff;
+}
+
+#page-receive .table td, 
+#page-receive .table th { vertical-align: middle; }
+
+#page-receive .form-label { font-weight: 600; }
+
+#page-receive .badge-subtle {
+  background: rgba(148,163,184,.12);
+  color: #cbd5e1;
+  border: 1px solid var(--border);
+}
+
+#page-receive .is-invalid { border-color: #ef4444 !important; }

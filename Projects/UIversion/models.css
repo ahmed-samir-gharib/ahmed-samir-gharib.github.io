@@ -1,0 +1,46 @@
+
+/* Models page-only styles */
+
+#page-models .panel-title {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 8px; color: #fff;
+}
+
+#page-models .table td,
+#page-models .table th { vertical-align: middle; }
+
+#page-models .models-search .form-control {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border);
+}
+#page-models .models-search .input-group-text {
+  color: var(--muted);
+  border-color: var(--border);
+}
+
+#page-models .filter-select {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border);
+}
+
+/* Icon / photo preview */
+#page-models .icon-preview {
+  width: 36px; height: 36px; display: grid; place-items: center;
+  background: rgba(255,255,255,.06);
+  border: 1px solid var(--border);
+  border-radius: 8px; color: #fff; font-size: 20px;
+  overflow: hidden;
+}
+#page-models .icon-preview img { width: 100%; height: 100%; object-fit: contain; }
+
+/* Icon grid */
+#page-models #iconGrid .icon-btn {
+  display: grid; place-items: center; width: 48px; height: 48px;
+  border-radius: 10px; border: 1px solid var(--border);
+  background: rgba(255,255,255,.06); color: #fff; cursor: pointer;
+}
+#page-models #iconGrid .icon-btn:hover {
+  outline: 2px solid rgba(14,165,255,.5);
+  box-shadow: 0 0 14px rgba(14,165,255,.35);
+}

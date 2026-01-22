@@ -1,0 +1,25 @@
+
+/* Handover page-only styles */
+
+#page-handover .panel-title {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 8px; color: #fff;
+}
+
+#page-handover .table td, 
+#page-handover .table th { vertical-align: middle; }
+
+#page-handover .signature-wrap {
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  padding: 8px;
+  background:
+    repeating-linear-gradient(45deg, rgba(255,255,255,.02), rgba(255,255,255,.02) 10px,
+                                     rgba(255,255,255,.04) 10px, rgba(255,255,255,.04) 20px);
+}
+
+/* Selected list items */
+#page-handover .list-group-item {
+  background: transparent; color: var(--text);
+}
+
+/* Print styling for handover doc (inside iframe) is injected dynamically */
